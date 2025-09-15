@@ -1,0 +1,39 @@
+SELECT 
+	scores.customer,
+	scores.positive_score,
+	scores.negative_score,
+	scores.neutral_score,
+	scores.compound_score,
+	call_log."Recording_Path",
+	call_log."Started"
+FROM 
+	scores
+JOIN 
+	call_log
+ON 
+	call_log."Recording_Path" = scores.customer;
+
+
+INSERT INTO final (customer,positive_score,negative_score,neutral_score,compound_score,Started)
+SELECT 
+	scores.customer,
+	scores.positive_score,
+	scores.negative_score,
+	scores.neutral_score,
+	scores.compound_score,
+	call_log."Started"
+FROM 
+	scores 
+JOIN 
+	call_log
+ON 
+	call_log."Recording_Path"=scores.customer
+
+WHERE
+    NOT EXISTS (
+        SELECT 1
+        FROM final
+        WHERE final.customer = scores.customer
+    );
+
+
