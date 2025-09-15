@@ -1,0 +1,29 @@
+[project]
+name = "call-insights"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "boto3>=1.40.20",
+    "langchain>=0.3.27",
+    "langchain-core>=0.3.75",
+    "langchain-google-genai>=2.1.10",
+    "langchain-openai>=0.3.32",
+    "langgraph>=0.6.6",
+    "langgraph-api>=0.4.1",
+    "langgraph-cli[inmem]>=0.4.0",
+    "psycopg2-binary>=2.9.10",
+    "torch>=2.8.0",
+    "transformers>=4.56.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
